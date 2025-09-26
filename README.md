@@ -20,6 +20,47 @@ STEP-5: Read the characters row wise or column wise in the former order to get t
 
 # PROGRAM
 
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    int i, j, len, rails, count, dir;
+    char str[1000];
+    int code[100][1000] = {0};  // Initialize the entire array to 0
+    printf("Enter a Secret Message:\n");
+    scanf("%s",str);
+    len = strlen(str);
+    printf("Enter number of rails:\n");
+    scanf("%d", &rails);
+    count = 0;
+    i = 0;
+    dir = 1;  
+    for (j = 0; j < len; j++) {
+        code[i][j] = str[j];
+        // Change direction if we reach the top or bottom rail
+        if (i == 0) {
+            dir = 1;
+        } else if (i == rails - 1) {
+            dir = -1;
+        }
+        i += dir;
+    }
+    printf("Encrypted Message:\n");
+    // Print the encrypted message
+    for (i = 0; i < rails; i++) {
+        for (j = 0; j < len; j++) {
+            if (code[i][j] != 0) {
+                printf("%c", code[i][j]);
+            }
+        }
+    }
+    printf("\n");
+    return 0;
+}
+```
 # OUTPUT
+<img width="808" height="311" alt="image" src="https://github.com/user-attachments/assets/cf7c082f-e5ee-4ec3-a4ed-09f7587d16c4" />
+
 
 # RESULT
+The output is verified successfully
